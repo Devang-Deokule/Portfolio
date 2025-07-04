@@ -11,18 +11,6 @@ This project is my personal website to showcase my work, skills, and experience 
 
 ---
 
-## 📌 Table of Contents
-
-- [About](#about)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-- [Screenshots](#screenshots)
-- [Contact](#contact)
-- [License](#license)
-
----
-
 ## 📖 About
 
 This portfolio website is built to highlight my projects, technical skills, and professional background.  
