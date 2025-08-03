@@ -617,6 +617,7 @@ header.sticky {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
 .photo-decoration {
@@ -1337,7 +1338,7 @@ header.sticky {
 
 .availability {
   background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
   padding: 20px;
   border-radius: var(--border-radius);
   box-shadow: var(--glass-shadow);
@@ -1897,3 +1898,111 @@ footer {
   display: block;
 }
 
+/* Contact Options Styles */
+.contact-options {
+  margin-top: 20px;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--glass-border);
+  animation: slideIn 0.3s ease-out;
+}
+
+.contact-buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.contact-option-btn {
+  flex: 1;
+  min-width: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.contact-option-btn i {
+  font-size: 1.1rem;
+}
+
+.contact-option-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(139, 90, 43, 0.3);
+}
+
+#emailBtn {
+  background: linear-gradient(135deg, #ea4335, #d33b2c);
+  color: white;
+  border: none;
+}
+
+#emailBtn:hover {
+  background: linear-gradient(135deg, #d33b2c, #b52d20);
+  box-shadow: 0 8px 25px rgba(234, 67, 53, 0.4);
+}
+
+#whatsappBtn {
+  background: linear-gradient(135deg, #25d366, #1db954);
+  color: white;
+  border: none;
+}
+
+#whatsappBtn:hover {
+  background: linear-gradient(135deg, #1db954, #17a043);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+}
+
+.cancel-btn {
+  width: 100%;
+  background: transparent;
+  color: var(--secondary-color);
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.cancel-btn:hover {
+  background: rgba(179, 58, 58, 0.1);
+  color: var(--danger-color);
+  border-color: var(--danger-color);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark theme overrides for contact options */
+.dark-theme .contact-options {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+}
+
+/* Mobile responsiveness for contact buttons */
+@media (max-width: 480px) {
+  .contact-buttons {
+    flex-direction: column;
+  }
+
+  .contact-option-btn {
+    min-width: 100%;
+  }
+}

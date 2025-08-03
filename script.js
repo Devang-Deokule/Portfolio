@@ -288,20 +288,81 @@ document.addEventListener("DOMContentLoaded", () => {
       const subject = document.getElementById("subject").value
       const message = document.getElementById("message").value
 
-      // Here you would typically send the form data to a server
-      // For demonstration, we'll just log it and show a success message
-      console.log("Form submitted:", { name, email, subject, message })
+      // Hide the submit button and show contact options
+      const submitBtn = contactForm.querySelector(".submit-btn")
+      submitBtn.style.display = "none"
 
-      // Show success message
-      formStatus.textContent = "Thank you for your message! I will get back to you soon."
-      formStatus.classList.add("success")
+      // Create contact options HTML
+      const contactOptionsHTML = `
+      <div class="contact-options" id="contactOptions">
+        <p style="text-align: center; margin-bottom: 20px; color: var(--text-color); font-weight: 500;">Choose how to send your message:</p>
+        <div class="contact-buttons">
+          <button type="button" class="btn primary-btn contact-option-btn" id="emailBtn">
+            <i class="fas fa-envelope"></i>
+            Send via Email
+          </button>
+          <button type="button" class="btn secondary-btn contact-option-btn" id="whatsappBtn">
+            <i class="fab fa-whatsapp"></i>
+            Send via WhatsApp
+          </button>
+        </div>
+        <button type="button" class="btn cancel-btn" id="cancelBtn">
+          <i class="fas fa-times"></i>
+          Cancel
+        </button>
+      </div>
+    `
 
-      // Reset form after a delay
-      setTimeout(() => {
-        contactForm.reset()
-        formStatus.textContent = ""
-        formStatus.classList.remove("success")
-      }, 3000)
+      // Insert contact options after the form
+      submitBtn.insertAdjacentHTML("afterend", contactOptionsHTML)
+
+      // Add event listeners to the new buttons
+      const emailBtn = document.getElementById("emailBtn")
+      const whatsappBtn = document.getElementById("whatsappBtn")
+      const cancelBtn = document.getElementById("cancelBtn")
+      const contactOptions = document.getElementById("contactOptions")
+
+      // Email button click
+      emailBtn.addEventListener("click", () => {
+        const emailSubject = encodeURIComponent(`Portfolio Contact: ${subject}`)
+        const emailBody = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)
+
+        window.open(`mailto:deokuledevang@gmail.com?subject=${emailSubject}&body=${emailBody}`, "_blank")
+
+        showSuccessAndReset("Message sent via Email! Check your email client.")
+      })
+
+      // WhatsApp button click
+      whatsappBtn.addEventListener("click", () => {
+        const whatsappMessage = encodeURIComponent(
+          `Hi Devang! I'm ${name}.\n\nSubject: ${subject}\n\nMessage: ${message}\n\nYou can reach me at: ${email}`,
+        )
+
+        window.open(`https://wa.me/917039969768?text=${whatsappMessage}`, "_blank")
+
+        showSuccessAndReset("Message sent via WhatsApp!")
+      })
+
+      // Cancel button click
+      cancelBtn.addEventListener("click", () => {
+        contactOptions.remove()
+        submitBtn.style.display = "flex"
+      })
+
+      // Function to show success message and reset form
+      function showSuccessAndReset(message) {
+        contactOptions.remove()
+
+        formStatus.textContent = message
+        formStatus.classList.add("success")
+
+        setTimeout(() => {
+          contactForm.reset()
+          formStatus.textContent = ""
+          formStatus.classList.remove("success")
+          submitBtn.style.display = "flex"
+        }, 3000)
+      }
     })
   }
 
@@ -397,4 +458,3 @@ function initSectionAnimations() {
     headerObserver.observe(header)
   })
 }
-
