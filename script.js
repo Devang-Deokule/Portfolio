@@ -313,8 +313,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.getElementById("contactForm")
   if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
-      e.preventDefault()
-      showContactOptionsModal(true) // From form submission
+      const formStatus = document.getElementById("formStatus");
+      formStatus.textContent = "Sending message...";
+      formStatus.classList.add("success");
     })
   }
 
