@@ -554,6 +554,12 @@ header.sticky {
   max-width: 600px;
 }
 
+.hero-buttons {
+  display: flex;
+  align-items: center; /* Add this line for vertical alignment */
+  gap: 20px; /* Keep existing gap */
+}
+
 .social-icons {
   display: flex;
   gap: 15px;
@@ -1097,7 +1103,6 @@ header.sticky {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 30px;
 }
 
 .dot {
@@ -1898,15 +1903,43 @@ footer {
   display: block;
 }
 
-/* Contact Options Styles */
-.contact-options {
-  margin-top: 20px;
-  padding: 25px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+/* Global Contact Options Modal Styles */
+.global-contact-options-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000; /* Ensure it's on top of everything */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.global-contact-options-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.contact-options-content {
+  background: var(--bg-color);
+  padding: 30px;
   border-radius: var(--border-radius);
-  border: 1px solid var(--glass-border);
+  box-shadow: var(--box-shadow);
+  max-width: 400px;
+  width: 90%;
   animation: slideIn 0.3s ease-out;
+  border: 1px solid var(--border-color);
+}
+
+.dark-theme .contact-options-content {
+  background: var(--dark-color);
+  border-color: var(--border-color);
 }
 
 .contact-buttons {
@@ -1941,24 +1974,24 @@ footer {
   box-shadow: 0 8px 25px rgba(139, 90, 43, 0.3);
 }
 
-#emailBtn {
+#modalEmailBtn {
   background: linear-gradient(135deg, #ea4335, #d33b2c);
   color: white;
   border: none;
 }
 
-#emailBtn:hover {
+#modalEmailBtn:hover {
   background: linear-gradient(135deg, #d33b2c, #b52d20);
   box-shadow: 0 8px 25px rgba(234, 67, 53, 0.4);
 }
 
-#whatsappBtn {
+#modalWhatsappBtn {
   background: linear-gradient(135deg, #25d366, #1db954);
   color: white;
   border: none;
 }
 
-#whatsappBtn:hover {
+#modalWhatsappBtn:hover {
   background: linear-gradient(135deg, #1db954, #17a043);
   box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
 }

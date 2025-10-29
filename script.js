@@ -274,96 +274,88 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 
-  // Form submission
-  const contactForm = document.getElementById("contactForm")
+  // --- Global Contact Options Modal Logic ---
+  const globalContactOptionsModal = document.getElementById("globalContactOptionsModal")
+  const modalEmailBtn = document.getElementById("modalEmailBtn")
+  const modalWhatsappBtn = document.getElementById("modalWhatsappBtn")
+  const modalCancelBtn = document.getElementById("modalCancelBtn")
   const formStatus = document.getElementById("formStatus")
 
+  let isFormSubmission = false // Flag to check if the modal was opened by form submission
+
+  function showContactOptionsModal(fromForm = false) {
+    isFormSubmission = fromForm
+    globalContactOptionsModal.classList.add("active")
+    document.body.style.overflow = "hidden" // Prevent scrolling when modal is active
+  }
+
+  function hideContactOptionsModal() {
+    globalContactOptionsModal.classList.remove("active")
+    document.body.style.overflow = "" // Restore scrolling
+    if (isFormSubmission) {
+      // Only reset form if it was a form submission
+      contactForm.reset()
+      formStatus.textContent = ""
+      formStatus.classList.remove("success")
+      contactForm.querySelector(".submit-btn").style.display = "flex"
+    }
+  }
+
+  // Event listener for the "Let's Connect" button
+  const connectBtn = document.getElementById("connectBtn")
+  if (connectBtn) {
+    connectBtn.addEventListener("click", () => {
+      showContactOptionsModal(false) // Not from form submission
+    })
+  }
+
+  // Event listener for the contact form submission
+  const contactForm = document.getElementById("contactForm")
   if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
       e.preventDefault()
-
-      // Get form values
-      const name = document.getElementById("name").value
-      const email = document.getElementById("email").value
-      const subject = document.getElementById("subject").value
-      const message = document.getElementById("message").value
-
-      // Hide the submit button and show contact options
-      const submitBtn = contactForm.querySelector(".submit-btn")
-      submitBtn.style.display = "none"
-
-      // Create contact options HTML
-      const contactOptionsHTML = `
-      <div class="contact-options" id="contactOptions">
-        <p style="text-align: center; margin-bottom: 20px; color: var(--text-color); font-weight: 500;">Choose how to send your message:</p>
-        <div class="contact-buttons">
-          <button type="button" class="btn primary-btn contact-option-btn" id="emailBtn">
-            <i class="fas fa-envelope"></i>
-            Send via Email
-          </button>
-          <button type="button" class="btn secondary-btn contact-option-btn" id="whatsappBtn">
-            <i class="fab fa-whatsapp"></i>
-            Send via WhatsApp
-          </button>
-        </div>
-        <button type="button" class="btn cancel-btn" id="cancelBtn">
-          <i class="fas fa-times"></i>
-          Cancel
-        </button>
-      </div>
-    `
-
-      // Insert contact options after the form
-      submitBtn.insertAdjacentHTML("afterend", contactOptionsHTML)
-
-      // Add event listeners to the new buttons
-      const emailBtn = document.getElementById("emailBtn")
-      const whatsappBtn = document.getElementById("whatsappBtn")
-      const cancelBtn = document.getElementById("cancelBtn")
-      const contactOptions = document.getElementById("contactOptions")
-
-      // Email button click
-      emailBtn.addEventListener("click", () => {
-        const emailSubject = encodeURIComponent(`Portfolio Contact: ${subject}`)
-        const emailBody = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)
-
-        window.open(`mailto:deokuledevang@gmail.com?subject=${emailSubject}&body=${emailBody}`, "_blank")
-
-        showSuccessAndReset("Message sent via Email! Check your email client.")
-      })
-
-      // WhatsApp button click
-      whatsappBtn.addEventListener("click", () => {
-        const whatsappMessage = encodeURIComponent(
-          `Hi Devang! I'm ${name}.\n\nSubject: ${subject}\n\nMessage: ${message}\n\nYou can reach me at: ${email}`,
-        )
-
-        window.open(`https://wa.me/917039969768?text=${whatsappMessage}`, "_blank")
-
-        showSuccessAndReset("Message sent via WhatsApp!")
-      })
-
-      // Cancel button click
-      cancelBtn.addEventListener("click", () => {
-        contactOptions.remove()
-        submitBtn.style.display = "flex"
-      })
-
-      // Function to show success message and reset form
-      function showSuccessAndReset(message) {
-        contactOptions.remove()
-
-        formStatus.textContent = message
-        formStatus.classList.add("success")
-
-        setTimeout(() => {
-          contactForm.reset()
-          formStatus.textContent = ""
-          formStatus.classList.remove("success")
-          submitBtn.style.display = "flex"
-        }, 3000)
-      }
+      showContactOptionsModal(true) // From form submission
     })
+  }
+
+  // Event listeners for buttons inside the modal
+  if (modalEmailBtn) {
+    modalEmailBtn.addEventListener("click", () => {
+      const emailSubject = isFormSubmission
+        ? encodeURIComponent(`Portfolio Contact: ${document.getElementById("subject").value}`)
+        : encodeURIComponent("Portfolio Connection Request")
+      const emailBody = isFormSubmission
+        ? encodeURIComponent(
+            `Name: ${document.getElementById("name").value}\nEmail: ${document.getElementById("email").value}\n\nMessage:\n${document.getElementById("message").value}`,
+          )
+        : encodeURIComponent("Hi Devang, I'd like to connect with you regarding your portfolio.")
+
+      window.open(`mailto:deokuledevang@gmail.com?subject=${emailSubject}&body=${emailBody}`, "_blank")
+
+      formStatus.textContent = "Message sent via Email! Check your email client."
+      formStatus.classList.add("success")
+      setTimeout(hideContactOptionsModal, 3000)
+    })
+  }
+
+  if (modalWhatsappBtn) {
+    modalWhatsappBtn.addEventListener("click", () => {
+      const whatsappMessage = isFormSubmission
+        ? encodeURIComponent(
+            `Hi Devang! I'm ${document.getElementById("name").value}.\n\nSubject: ${document.getElementById("subject").value}\n\nMessage: ${document.getElementById("message").value}\n\nYou can reach me at: ${document.getElementById("email").value}`,
+          )
+        : encodeURIComponent("Hi Devang! I saw your portfolio and would like to connect.")
+
+      window.open(`https://wa.me/917039969768?text=${whatsappMessage}`, "_blank")
+
+      formStatus.textContent = "Message sent via WhatsApp!"
+      formStatus.classList.add("success")
+      setTimeout(hideContactOptionsModal, 3000)
+    })
+  }
+
+  if (modalCancelBtn) {
+    modalCancelBtn.addEventListener("click", hideContactOptionsModal)
   }
 
   // Intersection Observer for animations

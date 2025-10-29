@@ -3,16 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Devang Deokule | Portfolio</title>
+    <title>Devang Deokule | Full Stack Developer & UI/UX Designer Portfolio</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Devang Deokule is a passionate Full Stack Developer and UI/UX Designer specializing in web, Android, and desktop applications. Explore my projects, skills, and experience in software development, AI/ML, and more.">
+    <meta name="keywords" content="Devang Deokule, portfolio, web developer, Android developer, UI/UX designer, full stack, software development, AI/ML, React, Kotlin, Java, Python, Firebase, Mumbai, India">
+    <meta name="author" content="Devang Deokule">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Devang Deokule | Full Stack Developer & UI/UX Designer Portfolio">
+    <meta property="og:description" content="Devang Deokule is a passionate Full Stack Developer and UI/UX Designer specializing in web, Android, and desktop applications. Explore my projects, skills, and experience.">
+    <meta property="og:image" content="/placeholder.svg?height=600&width=1200">
+    <meta property="og:url" content="https://devang-deokule.github.io/Portfolio/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Devang Deokule | Full Stack Developer & UI/UX Designer Portfolio">
+    <meta name="twitter:description" content="Devang Deokule is a passionate Full Stack Developer and UI/UX Designer specializing in web, Android, and desktop applications. Explore my projects, skills, and experience.">
+    <meta name="twitter:image" content="/placeholder.svg?height=600&width=1200">
+
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    <meta name="robots" content="noindex,nofollow">
-    <meta name="googlebot" content="noindex,nofollow">
-    <meta name="pinterest" content="nopin">
+    
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Devang Deokule",
+      "url": "https://devang-deokule.github.io/Portfolio/",
+      "image": "/placeholder.svg?height=500&width=500",
+      "sameAs": [
+        "https://www.linkedin.com/in/devang-deokule-188584268/",
+        "https://github.com/Devang-Deokule",
+        "https://x.com/26Devangg",
+        "https://www.instagram.com/devangg26?igsh=MTJ2ZmR4cmtycDFoZQ==",
+        "mailto:deokuledevang@gmail.com"
+      ],
+      "jobTitle": "Full Stack Developer & UI/UX Designer",
+      "alumniOf": "Mumbai University",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Freelance"
+      },
+      "email": "mailto:deokuledevang@gmail.com",
+      "telephone": "+917039969768",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Mumbai",
+        "addressCountry": "India"
+      }
+    }
+    </script>
 </head>
 <body>
     <!-- Animated Background -->
@@ -62,7 +108,6 @@
         <div class="hero-content">
             <h1>Hello, I'm <span class="highlight">Devang Deokule</span></h1>
             <h2>I'm a <span class="auto-type"></span></h2>
-            <!-- <p class="hero-description">Creating innovative digital solutions that drive business growth and enhance user experience.</p> -->
             
             <div class="social-icons">
                 <a href="https://www.linkedin.com/in/devang-deokule-188584268/" target="_blank" class="social-icon" aria-label="LinkedIn">
@@ -81,13 +126,18 @@
                     <i class="fas fa-envelope"></i>
                 </a>
             </div>
-            <a href="Devang_Deokule_Resume.pdf" download class="btn primary-btn">
+            <div class="hero-buttons"> <!-- Added a div to group buttons -->
+                <a href="Devang_Deokule_Resume.pdf" download class="btn primary-btn">
                     <i class="fas fa-download"></i> Download Resume
                 </a>
+                <button type="button" class="btn primary-btn" id="connectBtn">
+                    <i class="fas fa-handshake"></i> Let's Connect
+                </button>
+            </div>
         </div>
         <div class="hero-image">
             <div class="profile-photo">
-                <img src="images/dd.jpg" alt="Devang Deokule">
+                <img src="/placeholder.svg?height=500&width=500" alt="Devang Deokule">
             </div>
             <div class="photo-decoration">
                 <div class="circle circle1"></div>
@@ -106,7 +156,7 @@
         <div class="about-card">
             <div class="about-brief">
                 <div class="about-image">
-                    <img src="images/dd1.jpg" alt="Profile picture">
+                    <img src="/placeholder.svg?height=300&width=300" alt="Profile picture">
                 </div>
                 <div class="about-intro">
                     <h3>Who am I?</h3>
@@ -396,17 +446,21 @@
                 </div>
             </div>
             
-            <button class="slider-btn next-btn" aria-label="Next services">
-                <i class="fas fa-chevron-right"></i>
+            <button class="slider-btn prev-btn" aria-label="Previous services">
+                <i class="fas fa-chevron-left"></i>
             </button>
+            
+            <div class="slider-dots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+                <span class="dot" data-index="3"></span>
+            </div>
         </div>
         
-        <div class="slider-dots">
-            <span class="dot active" data-index="0"></span>
-            <span class="dot" data-index="1"></span>
-            <span class="dot" data-index="2"></span>
-            <span class="dot" data-index="3"></span>
-        </div>
+        <button class="slider-btn next-btn" aria-label="Next services">
+            <i class="fas fa-chevron-right"></i>
+        </button>
     </section>
 
     <section id="work" class="work">
@@ -414,16 +468,10 @@
             <h2>My Work</h2>
             <div class="underline"></div>
         </div>
-        <!-- <div class="work-filter">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="app">Android Apps</button>
-            <button class="filter-btn" data-filter="ui">UI/UX Design</button>
-            <button class="filter-btn" data-filter="other">Other</button>
-        </div> -->
         <div class="work-grid">
             <div class="work-item" data-category="app">
                 <div class="work-img">
-                    <img src="images/VESP App.png" alt="VESP app">
+                    <img src="/placeholder.svg?height=250&width=300" alt="VESP app">
                     <div class="work-overlay">
                         <h3>VESP-App</h3>
                         <center><p>Android app for college ops with attendance, results, fees, and digital ID using Jetpack Compose and Firebase.</p></center>
@@ -436,12 +484,12 @@
             </div>
             <div class="work-item" data-category="website">
                 <div class="work-img">
-                    <img src="images/signify.jpg" alt="Signify | Sign Language to Text and Speech in real time">
+                    <img src="/placeholder.svg?height=250&width=300" alt="Signify | Sign Language to Text and Speech in real time">
                     <div class="work-overlay">
                         <h3>Signify</h3>
                         <center><p>Real-time sign language detection system using MediaPipe, OpenCV, and a custom ML model to convert gestures to text and speech.</p></center>
                         <div class="work-links">
-                            <a href="https://www.linkedin.com/posts/devang-deokule_hackathon-codestrom2025-socialimpact-activity-7350186339482439680-5dTd?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEGUn_gBNuTshZFV6sUsidjr0QvKYwarJ78" target="_blank" class="work-link"><i class="fas fa-eye"></i></a>
+                            <a href="https://www.linkedin.com/posts/devang-deokule-188584268_hackathon-codestrom2025-socialimpact-activity-7350186339482439680-5dTd?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEGUn_gBNuTshZFV6sUsidjr0QvKYwarJ78" target="_blank" class="work-link"><i class="fas fa-eye"></i></a>
                             <a href="https://github.com/Devang-Deokule/Signify" target="_blank" class="work-link"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
@@ -449,7 +497,7 @@
             </div>
             <div class="work-item" data-category="app">
                 <div class="work-img">
-                    <img src="images/weather app.jpg" alt="weather">
+                    <img src="/placeholder.svg?height=250&width=300" alt="weather">
                     <div class="work-overlay">
                         <h3>Weather Application</h3>
                         <center><p>Weather app showing real-time data, forecasts, and location-based updates using public APIs.</p></center>
@@ -462,20 +510,20 @@
             </div>
             <div class="work-item" data-category="ui">
                 <div class="work-img">
-                    <img src="images/car rental website.jpg" alt="Car Rental website">
+                    <img src="/placeholder.svg?height=250&width=300" alt="Car Rental website">
                     <div class="work-overlay">
-                        <h3>E-Car Rental</h3>
+                        <h3>Shree Pest Control Services</h3>
                         <p>Website</p>
                         <div class="work-links">
-                            <a href="https://devang-deokule.github.io/CarRentalSystem.github.io/" target="_blank" class="work-link"><i class="fas fa-eye"></i></a>
-                            <a href="https://github.com/Devang-Deokule/CarRentalSystem.github.io" target="_blank" class="work-link"><i class="fab fa-github"></i></a>
+                            <a href="https://github.com/Devang-Deokule/ShreePestControlServices.git" target="_blank" class="work-link"><i class="fas fa-eye"></i></a>
+                            <a href="https://github.com/Devang-Deokule/ShreePestControlServices.git" target="_blank" class="work-link"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="work-item" data-category="other">
                 <div class="work-img">
-                    <img src="images/nova.png" alt="NOVA">
+                    <img src="/placeholder.svg?height=250&width=300" alt="NOVA">
                     <div class="work-overlay">
                         <h3>NOVA - Personal Voice Assistant </h3>
                         <center><p>A voice assistant with chat GUI for app control, messaging, and live updates using APIs.</p></center>
@@ -488,7 +536,7 @@
             </div>
             <div class="work-item" data-category="app">
                 <div class="work-img">
-                    <img src="images/AI Legal Verifier1.jpg" alt="AI Legal Verifier">
+                    <img src="/placeholder.svg?height=250&width=300" alt="AI Legal Verifier">
                     <div class="work-overlay">
                         <h3>AI Legal Verifier</h3>
                         <center><p>AI-based tool to verify legal content against Indian laws using semantic search and embeddings.</p></center>
@@ -540,14 +588,6 @@
                     <a href="https://x.com/26Devangg" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
                     <a href="https://www.instagram.com/devangg26?igsh=MTJ2ZmR4cmtycDFoZQ==" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
                 </div>
-                
-                <!-- <div class="availability">
-                    <h4>Current Availability</h4>
-                    <div class="availability-status">
-                        <span class="status-indicator available"></span>
-                        <p>Available for freelance projects</p>
-                    </div>
-                </div> -->
             </div>
             <div class="contact-form">
                 <form id="contactForm">
@@ -597,6 +637,27 @@
         <i class="fas fa-arrow-up"></i>
     </div>
 
+    <!-- Global Contact Options Modal -->
+    <div class="global-contact-options-modal" id="globalContactOptionsModal">
+      <div class="contact-options-content">
+        <p style="text-align: center; margin-bottom: 20px; color: var(--text-color); font-weight: 500;">Choose how to connect:</p>
+        <div class="contact-buttons">
+          <button type="button" class="btn primary-btn contact-option-btn" id="modalEmailBtn">
+            <i class="fas fa-envelope"></i>
+            Send via Email
+          </button>
+          <button type="button" class="btn secondary-btn contact-option-btn" id="modalWhatsappBtn">
+            <i class="fab fa-whatsapp"></i>
+            Send via WhatsApp
+          </button>
+        </div>
+        <button type="button" class="btn cancel-btn" id="modalCancelBtn">
+          <i class="fas fa-times"></i>
+          Cancel
+        </button>
+      </div>
+    </div>
+
     <script src="script.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script>
@@ -609,4 +670,3 @@
     </script>
 </body>
 </html>
-
